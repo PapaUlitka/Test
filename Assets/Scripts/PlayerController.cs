@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float movementY;
     Rigidbody rb;
     public float speed = 10f;
+    public TextMeshProUGUI countText;
+    private int count;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        countText.text = "Count: " + count.ToString();
     }
     void OnMove(InputValue movementValue)
     {
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PickUp"))
         {
+            count++;
             other.gameObject.SetActive(false);
         }
     }
